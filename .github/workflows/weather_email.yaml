@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Send weather email
-        run: node src/index.js
+        run: node index.js
         env:
           MAIL_USER: ${{ secrets.MAIL_USER }}
           MAIL_PASS: ${{ secrets.MAIL_PASS }}
