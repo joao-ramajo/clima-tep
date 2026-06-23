@@ -4,7 +4,7 @@ import { geo } from "./geo.js";
 import { weather } from "./weather.js";
 import { loadEnvFile } from 'node:process';
 
-loadEnvFile();
+// loadEnvFile();
 
 const main = async () => {
     try {
