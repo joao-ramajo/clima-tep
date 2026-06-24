@@ -35,8 +35,13 @@ const main = async () => {
 		};
 
 		await send(message);
-	} catch (error: any) {
-		console.error("Houve um erro durante o processamento: " + error.message);
+	} catch (error: unknown) {
+		if (error instanceof Error) {
+			console.error(`Houve um erro durante o processamento: ${error.message}`);
+			return;
+		}
+
+		console.error("Houve um erro desconhecido durante o processamento:", error);
 	}
 };
 
