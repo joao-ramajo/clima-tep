@@ -3,7 +3,7 @@ name: Weather Mail
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 9,13,17,21,1 * * *" # 06h, 10h, 14h, 18h e 22h no Brasil
+    - cron: "17 9,13,17,21,1 * * *" # 06:17, 10:17, 14:17, 18:17 e 22:17 no Brasil
 
 jobs:
   send-weather:
@@ -21,8 +21,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Build TypeScript
+        run: npm run build
+
       - name: Send weather email
-        run: node index.js
+        run: npm start
         env:
           MAIL_USER: ${{ secrets.MAIL_USER }}
           MAIL_PASS: ${{ secrets.MAIL_PASS }}

@@ -1,8 +1,8 @@
-export const rawBody = (geoInfo, weatherInfo) => {
+export const rawBody = (geoInfo: Record<string, string>, weatherInfo: Record<string, string>): string => {
     return `Cidade: ${geoInfo.location} Temperatura: ${weatherInfo.temperature} ${weatherInfo.temperatureUnit} Vento: ${weatherInfo.windSpeed} ${weatherInfo.windUnit}`;
 }
 
-export const htmlBody = (geoInfo, weatherInfo) => {
+export const htmlBody = (geoInfo: Record<string, string>, weatherInfo: Record<string, string>) => {
     return `
 <!DOCTYPE html>
 <html lang="pt-BR">

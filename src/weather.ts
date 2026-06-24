@@ -1,6 +1,6 @@
-export const weather = async (geoInfo) => {
-    const weatherInfoUrl = (lat, long) => {
-        const data = {
+export const weather = async (geoInfo: Record<string, string>) => {
+    const weatherInfoUrl = (lat: string, long: string) => {
+        const data: Record<string, string> = {
             latitude: lat,
             longitude: long,
         }

@@ -1,8 +1,9 @@
+
 export const geo = async () => {
-    const geoInfoUrl = (city) => {
-        const data = {
+    const geoInfoUrl = (city: string): string => {
+        const data: Record<string, string | string> = {
             name: city,
-            count: 1,
+            count: "1",
             language: "pt",
             format: "json"
         }
