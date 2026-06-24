@@ -14,7 +14,7 @@
 		"build": "tsc",
 		"start": "node dist/index.js",
 		"start:build": "npm run build && npm start",
-		"lint": "biome lint .",
+		"lint": "biome check .",
 		"lint:fix": "biome check --write . --unsafe"
 	}
 }
