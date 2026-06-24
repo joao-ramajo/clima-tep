@@ -1,8 +1,14 @@
-export const rawBody = (geoInfo: Record<string, string>, weatherInfo: Record<string, string>): string => {
-    return `Cidade: ${geoInfo.location} Temperatura: ${weatherInfo.temperature} ${weatherInfo.temperatureUnit} Vento: ${weatherInfo.windSpeed} ${weatherInfo.windUnit}`;
-}
+import type { GeoData } from "./types/geoData.js";
+import type { WeatherData } from "./types/weatherData.js";
 
-export const htmlBody = (geoInfo: Record<string, string>, weatherInfo: Record<string, string>) => {
+export const rawBody = (geoInfo: GeoData, weatherInfo: WeatherData): string => {
+    return `Cidade: ${geoInfo.cityName}
+Temperatura: ${weatherInfo.temperature} ${weatherInfo.temperatureUnit}
+Sensação térmica: ${weatherInfo.apparentTemperature} ${weatherInfo.apparentTemperatureUnit}
+Vento: ${weatherInfo.windSpeed} ${weatherInfo.windUnit}`;
+};
+
+export const htmlBody = (geoInfo: GeoData, weatherInfo: WeatherData): string => {
     return `
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -25,7 +31,7 @@ export const htmlBody = (geoInfo: Record<string, string>, weatherInfo: Record<st
                 Cidade
             </strong>
             <span style="font-size: 18px;">
-                ${geoInfo.location}
+                ${geoInfo.cityName}
             </span>
         </div>
 
@@ -35,6 +41,15 @@ export const htmlBody = (geoInfo: Record<string, string>, weatherInfo: Record<st
             </strong>
             <span style="font-size: 28px; font-weight: bold;">
                 ${weatherInfo.temperature} ${weatherInfo.temperatureUnit}
+            </span>
+        </div>
+
+        <div style="padding: 16px; border-radius: 10px; background-color: #f9fafb; margin-bottom: 12px;">
+            <strong style="display: block; font-size: 13px; color: #71717a; margin-bottom: 4px;">
+                Sensação térmica
+            </strong>
+            <span style="font-size: 18px;">
+                ${weatherInfo.apparentTemperature} ${weatherInfo.apparentTemperatureUnit}
             </span>
         </div>
 
@@ -49,4 +64,5 @@ export const htmlBody = (geoInfo: Record<string, string>, weatherInfo: Record<st
     </div>
 </body>
 </html>
-`}
+`;
+};

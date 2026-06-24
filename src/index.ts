@@ -1,10 +1,10 @@
 import { loadEnvFile } from 'node:process';
-import { geo } from './geo.js';
-import { weather } from './weather.js';
 import { htmlBody, rawBody } from './body.js';
 import { send } from './email.js';
+import { getGeoData } from './services/geoService.js';
+import { getWeatherData } from './services/weatherService.js';
 
-// loadEnvFile();
+loadEnvFile();
 
 const MAIL_USER = process.env.MAIL_USER ?? "user";
 const MAIL_TO = process.env.MAIL_TO ?? "to";
@@ -22,8 +22,9 @@ const main = async () => {
             timeZone: "America/Sao_Paulo",
         }).format(now);
 
-        const geoInfo = await geo();
-        const weatherInfo = await weather(geoInfo);
+        const geoInfo = await getGeoData("Carapicuiba");
+
+        const weatherInfo = await getWeatherData(geoInfo);
 
         const message: Record<string, string> = {
             from: MAIL_USER,
