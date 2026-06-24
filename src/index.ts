@@ -1,13 +1,14 @@
-import { loadEnvFile } from "node:process";
 import { htmlBody, rawBody } from "./body.js";
+import { bootstrap } from "./bootstrap.js";
 import { send } from "./email.js";
 import { getGeoData } from "./services/geoService.js";
 import { getWeatherData } from "./services/weatherService.js";
+import { requiredEnv } from "./utils/requireEnv.js";
 
-loadEnvFile();
+bootstrap();
 
-const MAIL_USER = process.env.MAIL_USER ?? "user";
-const MAIL_TO = process.env.MAIL_TO ?? "to";
+const MAIL_USER = requiredEnv("MAIL_USER");
+const MAIL_TO = requiredEnv("MAIL_TO");
 
 const main = async () => {
 	try {
@@ -42,6 +43,8 @@ const main = async () => {
 		}
 
 		console.error("Houve um erro desconhecido durante o processamento:", error);
+
+		process.exit(1);
 	}
 };
 
