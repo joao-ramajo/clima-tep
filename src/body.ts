@@ -2,14 +2,17 @@ import type { GeoData } from "./types/geoData.js";
 import type { WeatherData } from "./types/weatherData.js";
 
 export const rawBody = (geoInfo: GeoData, weatherInfo: WeatherData): string => {
-    return `Cidade: ${geoInfo.cityName}
+	return `Cidade: ${geoInfo.cityName}
 Temperatura: ${weatherInfo.temperature} ${weatherInfo.temperatureUnit}
 Sensação térmica: ${weatherInfo.apparentTemperature} ${weatherInfo.apparentTemperatureUnit}
 Vento: ${weatherInfo.windSpeed} ${weatherInfo.windUnit}`;
 };
 
-export const htmlBody = (geoInfo: GeoData, weatherInfo: WeatherData): string => {
-    return `
+export const htmlBody = (
+	geoInfo: GeoData,
+	weatherInfo: WeatherData,
+): string => {
+	return `
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>

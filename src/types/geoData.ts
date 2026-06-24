@@ -1,5 +1,5 @@
 export type GeoData = {
-    latitude: string,
-    longitude: string,
-    cityName: string
-}
+	latitude: string;
+	longitude: string;
+	cityName: string;
+};

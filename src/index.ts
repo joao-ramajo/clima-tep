@@ -1,8 +1,8 @@
-import { loadEnvFile } from 'node:process';
-import { htmlBody, rawBody } from './body.js';
-import { send } from './email.js';
-import { getGeoData } from './services/geoService.js';
-import { getWeatherData } from './services/weatherService.js';
+import { loadEnvFile } from "node:process";
+import { htmlBody, rawBody } from "./body.js";
+import { send } from "./email.js";
+import { getGeoData } from "./services/geoService.js";
+import { getWeatherData } from "./services/weatherService.js";
 
 loadEnvFile();
 
@@ -10,34 +10,34 @@ const MAIL_USER = process.env.MAIL_USER ?? "user";
 const MAIL_TO = process.env.MAIL_TO ?? "to";
 
 const main = async () => {
-    try {
-        const now = new Date();
+	try {
+		const now = new Date();
 
-        const formattedDateTime = new Intl.DateTimeFormat("pt-BR", {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-            timeZone: "America/Sao_Paulo",
-        }).format(now);
+		const formattedDateTime = new Intl.DateTimeFormat("pt-BR", {
+			day: "2-digit",
+			month: "2-digit",
+			year: "numeric",
+			hour: "2-digit",
+			minute: "2-digit",
+			timeZone: "America/Sao_Paulo",
+		}).format(now);
 
-        const geoInfo = await getGeoData("Carapicuiba");
+		const geoInfo = await getGeoData("Carapicuiba");
 
-        const weatherInfo = await getWeatherData(geoInfo);
+		const weatherInfo = await getWeatherData(geoInfo);
 
-        const message: Record<string, string> = {
-            from: MAIL_USER,
-            to: MAIL_TO,
-            subject: `Atualização de temperatura ${formattedDateTime}`,
-            text: rawBody(geoInfo, weatherInfo),
-            html: htmlBody(geoInfo, weatherInfo),
-        };
+		const message: Record<string, string> = {
+			from: MAIL_USER,
+			to: MAIL_TO,
+			subject: `Atualização de temperatura ${formattedDateTime}`,
+			text: rawBody(geoInfo, weatherInfo),
+			html: htmlBody(geoInfo, weatherInfo),
+		};
 
-        await send(message);
-    } catch (error: any) {
-        console.error('Houve um erro durante o processamento: ' + error.message);
-    }
-}
+		await send(message);
+	} catch (error: any) {
+		console.error("Houve um erro durante o processamento: " + error.message);
+	}
+};
 
 main();
