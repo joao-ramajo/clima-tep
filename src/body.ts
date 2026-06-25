@@ -30,8 +30,9 @@ export const htmlBody = (
     <!-- Header -->
     <tr>
         <td bgcolor="#1a6fb5" style="padding: 24px; border-radius: 12px 12px 0 0;">
-            <div style="font-size: 18px; color: #bfdbf7;">${geoInfo.cityName}</div>
-            <div style="margin-top: 6px; font-size: 22px; font-weight: bold; color: #ffffff;">Previsão do tempo - ${geoInfo.cityName} <img src="https://github.com/joao-ramajo/clima-tep/blob/main/public/icons/location-dot-solid-full.svg"/></div>
+            <div style="margin-top: 6px; font-size: 22px; font-weight: bold; color: #ffffff;">
+                Previsão do tempo - ${geoInfo.cityName}
+            </div>
             <div style="margin-top: 4px; font-size: 12px; color: #bfdbf7;">Atualização automática de temperatura</div>
         </td>
     </tr>
@@ -44,7 +45,15 @@ export const htmlBody = (
                     <td style="padding: 16px 18px;">
                         <table cellpadding="0" cellspacing="0" border="0" width="100%">
                             <tr>
-                                <td style="vertical-align: middle; width: 44px; font-size: 28px;"><img src="https://github.com/joao-ramajo/clima-tep/blob/main/public/icons/cloud-sun-rain-solid-full.svg"/></td>
+                                <td style="vertical-align: middle; width: 44px;">
+                                    <img
+                                        src="https://raw.githubusercontent.com/joao-ramajo/clima-tep/main/public/icons/cloud-sun-rain-solid-full.svg"
+                                        alt="Ícone de clima"
+                                        width="32"
+                                        height="32"
+                                        style="display: block;"
+                                    />
+                                </td>
                                 <td style="vertical-align: middle; padding-left: 8px;">
                                     <div style="font-size: 11px; color: #4a7dab;">Temperatura</div>
                                     <div style="font-size: 30px; font-weight: bold; color: #1a4f80; line-height: 1.1;">${weatherInfo.temperature}</div>
@@ -74,7 +83,15 @@ export const htmlBody = (
                     <td style="padding: 14px 16px;">
                         <table cellpadding="0" cellspacing="0" border="0">
                             <tr>
-                                <td style="vertical-align: middle; width: 36px; font-size: 22px;"><img src="https://github.com/joao-ramajo/clima-tep/blob/main/public/icons/temperature-empty-solid.png"/></td>
+                                <td style="vertical-align: middle; width: 36px;">
+                                    <img
+                                        src="https://raw.githubusercontent.com/joao-ramajo/clima-tep/main/public/icons/temperature-empty-solid.png"
+                                        alt="Ícone de temperatura"
+                                        width="24"
+                                        height="24"
+                                        style="display: block;"
+                                    />
+                                </td>
                                 <td style="padding-left: 10px; vertical-align: middle;">
                                     <div style="font-size: 11px; color: #a06010;">Sensação térmica</div>
                                     <div style="font-size: 20px; font-weight: bold; color: #7a4a08;">${weatherInfo.apparentTemperature}</div>
@@ -95,7 +112,15 @@ export const htmlBody = (
                     <td style="padding: 14px 16px;">
                         <table cellpadding="0" cellspacing="0" border="0">
                             <tr>
-                                <td style="vertical-align: middle; width: 36px; font-size: 22px;"><img src="https://github.com/joao-ramajo/clima-tep/blob/main/public/icons/droplet-solid.png"/></td>
+                                <td style="vertical-align: middle; width: 36px;">
+                                    <img
+                                        src="https://raw.githubusercontent.com/joao-ramajo/clima-tep/main/public/icons/droplet-solid.png"
+                                        alt="Ícone de umidade"
+                                        width="24"
+                                        height="24"
+                                        style="display: block;"
+                                    />
+                                </td>
                                 <td style="padding-left: 10px; vertical-align: middle;">
                                     <div style="font-size: 11px; color: #1a8050;">Umidade</div>
                                     <div style="font-size: 20px; font-weight: bold; color: #0d5c38;">${weatherInfo.humidity}</div>
@@ -116,7 +141,7 @@ export const htmlBody = (
                     <td style="padding: 14px 16px;">
                         <table cellpadding="0" cellspacing="0" border="0">
                             <tr>
-                                <td style="vertical-align: middle; width: 36px; font-size: 22px;">
+                                <td style="vertical-align: middle; width: 36px;">
                                     <img
                                         src="https://raw.githubusercontent.com/joao-ramajo/clima-tep/main/public/icons/wind-solid.png"
                                         alt="Ícone de vento"
