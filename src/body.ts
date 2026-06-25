@@ -116,7 +116,15 @@ export const htmlBody = (
                     <td style="padding: 14px 16px;">
                         <table cellpadding="0" cellspacing="0" border="0">
                             <tr>
-                                <td style="vertical-align: middle; width: 36px; font-size: 22px;">💨<i class="fa-solid fa-wind"></i></td>
+                                <td style="vertical-align: middle; width: 36px; font-size: 22px;">
+                                    <img
+                                        src="https://raw.githubusercontent.com/joao-ramajo/clima-tep/main/public/icons/wind-solid.png"
+                                        alt="Ícone de vento"
+                                        width="24"
+                                        height="24"
+                                        style="display: block;"
+                                    />
+                                </td>
                                 <td style="padding-left: 10px; vertical-align: middle;">
                                     <div style="font-size: 11px; color: #5b4cc4;">Velocidade do vento</div>
                                     <div style="font-size: 20px; font-weight: bold; color: #3b2fa0;">${weatherInfo.windSpeed}</div>
