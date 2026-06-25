@@ -7,7 +7,6 @@ import { formatWeatherUrl } from "../utils/formatWeatherUrl.js";
 export const getWeatherData = async (
 	geoData: GeoData,
 ): Promise<WeatherData> => {
-	console.log(formatWeatherUrl(geoData.latitude, geoData.longitude));
 	const response = await fetch(
 		formatWeatherUrl(geoData.latitude, geoData.longitude),
 	);

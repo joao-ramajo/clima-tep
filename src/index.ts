@@ -43,8 +43,6 @@ const main = async () => {
 			};
 
 			await send(message);
-
-			console.log(`Email enviado com informações sobre ${recipient.city}`);
 		}
 	} catch (error: unknown) {
 		console.error("Houve um erro durante o processamento:", error);
