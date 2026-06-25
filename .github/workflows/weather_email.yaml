@@ -29,4 +29,4 @@ jobs:
         env:
           MAIL_USER: ${{ secrets.MAIL_USER }}
           MAIL_PASS: ${{ secrets.MAIL_PASS }}
-          MAIL_TO: ${{ secrets.MAIL_TO }}
+          WEATHER_RECIPIENTS: ${{ secrets.WEATHER_RECIPIENTS }}
