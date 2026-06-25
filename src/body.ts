@@ -3,9 +3,10 @@ import type { WeatherData } from "./types/weatherData.js";
 
 export const rawBody = (geoInfo: GeoData, weatherInfo: WeatherData): string => {
 	return `Cidade: ${geoInfo.cityName}
-Temperatura: ${weatherInfo.temperature} ${weatherInfo.temperatureUnit}
-Sensação térmica: ${weatherInfo.apparentTemperature} ${weatherInfo.apparentTemperatureUnit}
-Vento: ${weatherInfo.windSpeed} ${weatherInfo.windUnit}`;
+Temperatura: ${weatherInfo.temperature}
+Sensação térmica: ${weatherInfo.apparentTemperature}
+Vento: ${weatherInfo.windSpeed}
+Umidade: ${weatherInfo.humidity}`;
 };
 
 export const htmlBody = (
@@ -43,7 +44,7 @@ export const htmlBody = (
                 Temperatura
             </strong>
             <span style="font-size: 28px; font-weight: bold;">
-                ${weatherInfo.temperature} ${weatherInfo.temperatureUnit}
+                ${weatherInfo.temperature}
             </span>
         </div>
 
@@ -52,7 +53,7 @@ export const htmlBody = (
                 Sensação térmica
             </strong>
             <span style="font-size: 18px;">
-                ${weatherInfo.apparentTemperature} ${weatherInfo.apparentTemperatureUnit}
+                ${weatherInfo.apparentTemperature}
             </span>
         </div>
 
@@ -61,7 +62,16 @@ export const htmlBody = (
                 Vento
             </strong>
             <span style="font-size: 18px;">
-                ${weatherInfo.windSpeed} ${weatherInfo.windUnit}
+                ${weatherInfo.windSpeed}
+            </span>
+        </div>
+
+        <div style="padding: 16px; border-radius: 10px; background-color: #f9fafb;">
+            <strong style="display: block; font-size: 13px; color: #71717a; margin-bottom: 4px;">
+                Umidade
+            </strong>
+            <span style="font-size: 18px;">
+                ${weatherInfo.humidity}
             </span>
         </div>
     </div>

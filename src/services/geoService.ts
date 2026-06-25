@@ -3,6 +3,7 @@ import type { GeoData } from "../types/geoData.js";
 import { formatGeoUrl } from "../utils/formatGeoUrl.js";
 
 export const getGeoData = async (city: string): Promise<GeoData> => {
+	console.log(formatGeoUrl(city));
 	const response = await fetch(formatGeoUrl(city));
 
 	if (!response.ok) {

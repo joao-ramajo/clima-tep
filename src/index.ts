@@ -47,12 +47,7 @@ const main = async () => {
 			console.log(`Email enviado com informações sobre ${recipient.city}`);
 		}
 	} catch (error: unknown) {
-		if (error instanceof Error) {
-			console.error(`Houve um erro durante o processamento: ${error.message}`);
-			return;
-		}
-
-		console.error("Houve um erro desconhecido durante o processamento:", error);
+		console.error("Houve um erro durante o processamento:", error);
 
 		process.exit(1);
 	}
