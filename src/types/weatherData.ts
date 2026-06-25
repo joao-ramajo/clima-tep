@@ -3,4 +3,5 @@ export type WeatherData = {
 	apparentTemperature: string;
 	windSpeed: string;
 	humidity: string;
+	condition: string;
 };

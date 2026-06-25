@@ -2,11 +2,14 @@ import type { GeoData } from "./types/geoData.js";
 import type { WeatherData } from "./types/weatherData.js";
 
 export const rawBody = (geoInfo: GeoData, weatherInfo: WeatherData): string => {
-	return `Cidade: ${geoInfo.cityName}
-Temperatura: ${weatherInfo.temperature}
-Sensação térmica: ${weatherInfo.apparentTemperature}
-Vento: ${weatherInfo.windSpeed}
-Umidade: ${weatherInfo.humidity}`;
+	return `
+        Cidade: ${geoInfo.cityName}
+        Temperatura: ${weatherInfo.temperature}
+        Sensação térmica: ${weatherInfo.apparentTemperature}
+        Vento: ${weatherInfo.windSpeed}
+        Umidade: ${weatherInfo.humidity}
+        Condição: ${weatherInfo.condition}
+    `;
 };
 
 export const htmlBody = (
@@ -23,7 +26,7 @@ export const htmlBody = (
 <body style="margin: 0; padding: 24px; background-color: #f4f4f5; font-family: Arial, sans-serif; color: #18181b;">
     <div style="max-width: 520px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; padding: 24px; border: 1px solid #e4e4e7;">
         <h1 style="margin: 0 0 8px; font-size: 24px; color: #18181b;">
-            Previsão do tempo
+            Previsão do tempo - ${weatherInfo.condition}
         </h1>
 
         <p style="margin: 0 0 24px; font-size: 14px; color: #71717a;">
