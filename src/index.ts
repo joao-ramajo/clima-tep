@@ -8,7 +8,14 @@ import { requiredEnv } from "./utils/requireEnv.js";
 bootstrap();
 
 const MAIL_USER = requiredEnv("MAIL_USER");
-const MAIL_TO = requiredEnv("MAIL_TO");
+const RECIPIENTS = requiredEnv("WEATHER_RECIPIENTS");
+
+export type WeatherRecipient = {
+	to: string;
+	city: string;
+};
+
+const recipients = JSON.parse(RECIPIENTS ?? "[]") as WeatherRecipient[];
 
 const main = async () => {
 	try {
@@ -23,19 +30,22 @@ const main = async () => {
 			timeZone: "America/Sao_Paulo",
 		}).format(now);
 
-		const geoInfo = await getGeoData("Carapicuiba");
+		for (const recipient of recipients) {
+			const geoInfo = await getGeoData(recipient.city);
+			const weatherInfo = await getWeatherData(geoInfo);
 
-		const weatherInfo = await getWeatherData(geoInfo);
+			const message: Record<string, string> = {
+				from: MAIL_USER,
+				to: recipient.to,
+				subject: `Atualização de temperatura - ${recipient.city} ${formattedDateTime}`,
+				text: rawBody(geoInfo, weatherInfo),
+				html: htmlBody(geoInfo, weatherInfo),
+			};
 
-		const message: Record<string, string> = {
-			from: MAIL_USER,
-			to: MAIL_TO,
-			subject: `Atualização de temperatura ${formattedDateTime}`,
-			text: rawBody(geoInfo, weatherInfo),
-			html: htmlBody(geoInfo, weatherInfo),
-		};
+			await send(message);
 
-		await send(message);
+			console.log(`Email enviado com informações sobre ${recipient.city}`);
+		}
 	} catch (error: unknown) {
 		if (error instanceof Error) {
 			console.error(`Houve um erro durante o processamento: ${error.message}`);
